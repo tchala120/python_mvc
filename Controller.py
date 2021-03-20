@@ -12,7 +12,7 @@ Model = Model()
 @app.route('/', methods=["GET", "POST"])
 def index():
     get_subjects = Model.get_subjects()
-    # get_students = Model.get_students()
+    get_students = Model.get_students()
     get_votes = Model.get_votes()
     get_sum_votes = Model.get_sum_votes()
     if request.method == "POST":
@@ -24,7 +24,7 @@ def index():
             Model.add_new_vote(vote_value)
         return redirect('/')
     else:
-        return render_template('index.html', subjects=get_subjects, votes=get_votes)
+        return render_template('index.html', subjects=get_subjects, students=get_students, votes=get_votes)
 
 
 @app.route('/result')
